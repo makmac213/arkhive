@@ -1,0 +1,12 @@
+<a href="{{ instance.link }}" target="_blank">View Original</a>
+
+<h2>{{ instance.title }}</h2>
+
+<h5>Created: {{ instance.created|date:"m-d-Y" }}</h5>
+<h5>Tags: {{ instance.tags }}</h5>
+<h5>Link: {{ instance.link }}</h5>
+
+
+{% autoescape off %}
+{{ instance.content }}
+{% endautoescape %}

@@ -1,0 +1,38 @@
+
+
+<table>
+    <thead>
+        <th>Title</th>
+        <th>Date</th>
+        <th>Original URL</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        {% for n in news %}
+            <tr>
+                <td>{{ n.title }}</td>
+                <td>{{ n.created }}</td>
+                <td>{{ n.link }}</td>
+                <td>
+                    <a href="{% url 'news_display' n.id %}">View</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+    {% if is_paginated %}
+        <div class="pagination">
+            <span class="page-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+                <span class="page-current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
